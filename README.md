@@ -5,9 +5,9 @@
 ## SQUAD: RonBugado-Academy
 
 ## Conhecimento colocado em Prática
-Tesde de API com Robot
-Consulta no Swagger
-GIT ACTION
+- Tesde de API com Robot
+- Consulta no Swagger
+- GIT ACTION
 
 ## Média:
 

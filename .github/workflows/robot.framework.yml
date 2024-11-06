@@ -46,7 +46,7 @@ jobs:
       id-token: write
     environment:
       name: github-pages       
-      url: https://Wayslan-in.github.io/Wayslan-Teste-de-Frontend-com-Robot/report.html   
+      url: https://Wayslan-in.github.io/Teste-de-Frontend-com-Robot/report.html   
 
     steps:
       - name: Setup Pages

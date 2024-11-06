@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: CLONAR ARQUIVOS DP REPOSITORIO
+    - name: CLONAR ARQUIVOS DE REPOSITORIO
       uses: actions/checkout@v4
 
     - name: CONFIGURAR PYTHON
@@ -23,9 +23,6 @@ jobs:
         pip install robotframework-requests
         pip install Faker
         pip install robotframework-seleniumlibrary
-
-    - name: Criar diretório de resultados CRIAR DIRETÓRIO DE RESULTADOS
-      run: mkdir -p results
 
     - name: EXECUTANDO OS TESTES DE API DO ROBOT
       run: |
@@ -50,7 +47,7 @@ jobs:
       id-token: write
     environment:
       name: github-pages       
-      url: https://Wayslan-in.github.io/Wayslan-Teste-de-Frontend-com-Robot/report.html   
+      url: https://Wayslan-in.github.io/Wayslan-TestedeFrontendcomRobot/report.html   
 
     steps:
       - name: SETUP PAGES

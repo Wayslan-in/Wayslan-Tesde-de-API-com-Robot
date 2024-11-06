@@ -5,14 +5,14 @@ on: push
 
 jobs:
   test:
-    name: Wayslan-Teste-de-Frontend-com-Robot
+    name: API Test
     runs-on: ubuntu-latest
 
     steps:
     - name: CLONAR ARQUIVOS DP REPOSITORIO
       uses: actions/checkout@v4
 
-    - name: Configurar Python
+    - name: CONFIGURAR PYTHON
       uses: actions/setup-python@v5
       with:
         python-version: '3.x'
@@ -23,11 +23,15 @@ jobs:
         pip install robotframework-requests
         pip install Faker
         pip install robotframework-seleniumlibrary
-    - name: Executando os testes de API do Robot
+
+    - name: Criar diretório de resultados CRIAR DIRETÓRIO DE RESULTADOS
+      run: mkdir -p results
+
+    - name: EXECUTANDO OS TESTES DE API DO ROBOT
       run: |
         robot --outputdir results/ tests/
       
-    - name: Test Report
+    - name: TEST REPORT
       uses: actions/upload-artifact@v4
       if: always()
       with:
@@ -49,21 +53,20 @@ jobs:
       url: https://Wayslan-in.github.io/Wayslan-Teste-de-Frontend-com-Robot/report.html   
 
     steps:
-      - name: Setup Pages
+      - name: SETUP PAGES
         uses: actions/configure-pages@v2
 
-      - name: Download Artifacts
+      - name: DOWNLOAD ARTIFACTS
         uses: actions/download-artifact@v4
         with: 
           name: robot-framework-report
           path: results/
 
-      - name: Upload artifact
+      - name: UPLOAD ARTIFACT
         uses: actions/upload-pages-artifact@v1
         with:
           path: results/
 
-      - name: Deploy to Github Pages
-        id: deployment
+      - name: DEPLOY TO GITHUB PAGES
         uses: actions/deploy-pages@v1
 

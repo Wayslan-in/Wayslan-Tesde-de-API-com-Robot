@@ -9,6 +9,12 @@
 - Consulta no Swagger
 - GIT ACTION
 
-## Média:
+## Média: https://github.com/Wayslan-in/Wayslan-Tesde-de-API-com-Robot/issues/1#issue-2638094093
 
-## Squad: Wayslan Miranda, Francisco Vanderson, Loysi Dias, Raphaela Teada, Iza Wicki, Joao Luz
+## Squad: RON BUGADO
+[01] Wayslan Miranda, <br>
+[02] Francisco Vanderson, <br>
+[03] Loysi Dias, <br>
+[04] Raphaela Teada, <br>
+[05] Iza Wicki, <br>
+[06] Joao Luz <br>

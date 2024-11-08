@@ -1,53 +1,55 @@
-name: Wayslan-Teste-de-Frontend-com-Robot
-
+name: Robot api frontend
 
 on: push
 
 jobs:
   test:
-    name: API Test
+    name: API Tests
     runs-on: ubuntu-latest
 
     steps:
-    - name: CLONAR ARQUIVOS DE REPOSITORIO
-      uses: actions/checkout@v4
+      - name: CLONAR ARQUIVOS DE REPOSITORIO
+        uses: actions/checkout@v4
 
-    - name: CONFIGURAR PYTHON
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.x'
+      - name: CONFIGURAR PYTHON
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
-    - name: INSTALAÇÃO DAS DEPENDENCIAS
-      run: |
-        pip install robotframework
-        pip install robotframework-requests
-        pip install Faker
-        pip install robotframework-seleniumlibrary
+      - name: INSTALAÇÃO DAS DEPENDENCIAS
+        run: |
+          pip install robotframework
+          pip install robotframework-requests
+          pip install Faker
+          pip install robotframework-seleniumlibrary
+          # Instalação do Chrome em modo headless
+          sudo apt-get update
+          sudo apt-get install -y xvfb libxi6 libgconf-2-4
+          sudo apt-get install -y google-chrome-stable
 
-    - name: EXECUTANDO OS TESTES DE API DO ROBOT
-      run: |
-        robot --outputdir results/ test/
+      - name: EXECUTANDO OS TESTES DE API DO ROBOT
+        env:
+          DISPLAY: :99
+        run: |
+          Xvfb :99 & 
+          robot --variable BROWSER:chrome --variable HEADLESS:True --outputdir results/ tests/
       
-    - name: TEST REPORT
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: robot-framework-report
-        path: results
+      - name: Test Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: robot-framework-report
+          path: results
 
   deploy:
     name: Deploy GitHub Pages 🌐
     runs-on: ubuntu-latest
-    needs: 
-      - test
+    needs: test
 
     permissions:
       contents: read
       pages: write
       id-token: write
-    environment:
-      name: github-pages       
-      url: https://Wayslan-in.github.io/Wayslan-TestedeFrontendcomRobot/report.html   
 
     steps:
       - name: SETUP PAGES
@@ -65,5 +67,76 @@ jobs:
           path: results/
 
       - name: DEPLOY TO GITHUB PAGES
+        id: deployment
         uses: actions/deploy-pages@v1
+
+
+# name: FRONT API
+
+
+# on: push
+
+# jobs:
+#   test:
+#     name: API Test
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - name: CLONAR ARQUIVOS DE REPOSITORIO
+#       uses: actions/checkout@v4
+
+#     - name: CONFIGURAR PYTHON
+#       uses: actions/setup-python@v5
+#       with:
+#         python-version: '3.x'
+
+#     - name: INSTALAÇÃO DAS DEPENDENCIAS
+#       run: |
+#         pip install robotframework
+#         pip install robotframework-requests
+#         pip install Faker
+#         pip install robotframework-seleniumlibrary
+
+#     - name: EXECUTANDO OS TESTES DE API DO ROBOT
+#       run: |
+#         robot --outputdir results/ test/
+      
+#     - name: TEST REPORT
+#       uses: actions/upload-artifact@v4
+#       if: always()
+#       with:
+#         name: robot-framework-report
+#         path: results
+
+#   deploy:
+#     name: Deploy GitHub Pages 🌐
+#     runs-on: ubuntu-latest
+#     needs: 
+#       - test
+
+#     permissions:
+#       contents: read
+#       pages: write
+#       id-token: write
+#     environment:
+#       name: github-pages          
+#       url: https://wayslan-in.github.io/WAYSLAN-TESTE-DE-API-COM-ROBOT/report.html    
+
+#     steps:
+#       - name: SETUP PAGES
+#         uses: actions/configure-pages@v2
+
+#       - name: DOWNLOAD ARTIFACTS
+#         uses: actions/download-artifact@v4
+#         with: 
+#           name: robot-framework-report
+#           path: results/
+
+#       - name: UPLOAD ARTIFACT
+#         uses: actions/upload-pages-artifact@v1
+#         with:
+#           path: results/
+
+#       - name: DEPLOY TO GITHUB PAGES
+#         uses: actions/deploy-pages@v1
 

@@ -25,7 +25,7 @@ jobs:
 
     - name: EXECUTANDO OS TESTES DE API DO ROBOT
       run: |
-        robot --outputdir results/  test/   company/
+        robot --outputdir results/ test/ test/company/
       
     - name: TEST REPORT
       uses: actions/upload-artifact@v4

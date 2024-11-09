@@ -2,7 +2,7 @@
 
 ## AUTOR: Wayslan Miranda
 
-## SQUAD: RonBugado-Academy
+## SQUAD: THE MENTALISTY-Academy
 
 ## Conhecimento colocado em Prática
 - Tesde de API com Robot
@@ -15,6 +15,4 @@
 [01] Wayslan Miranda, <br>
 [02] Francisco Vanderson, <br>
 [03] Loysi Dias, <br>
-[04] Raphaela Teada, <br>
-[05] Iza Wicki, <br>
-[06] Joao Luz <br>
+

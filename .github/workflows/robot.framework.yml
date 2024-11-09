@@ -4,7 +4,7 @@ on: push
 
 jobs:
   test:
-    name: API Test
+    name: API Test 
     runs-on: ubuntu-latest
 
     steps:
